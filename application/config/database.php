@@ -25,13 +25,12 @@
  */
 $config['default'] = array
 (
-	'benchmark'     => TRUE,
+	'benchmark'     => FALSE,
 	'persistent'    => FALSE,
-	//'connection'    => 'mysql://cliftonc_mdb:F0rtr3ss@localhost/cliftonc_mdb',
-	 'connection'    => 'mysql://root:slydog@localhost/mdb',
+	'connection'    => 'mysql://db_name:password@localhost/db_name',
 	'character_set' => 'utf8',
 	'table_prefix'  => '',
 	'object'        => TRUE,
-	'cache'         => FALSE,
+	'cache'         => TRUE,
 	'escape'        => TRUE
 );

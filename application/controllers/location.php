@@ -27,9 +27,18 @@ class Location_Controller extends Controller
  
     public function delete($id)
 	{
+		$status = 'success';		
 		$loc = ORM::factory('location',$id);
-		$loc->delete();
-		$this->_success("");		
+		try {
+			$loc->delete();
+		} catch(Exception $e) {
+			$status = 'fail';			
+		}		
+		if($status == 'success') {
+			$this->_success("");		
+		} else {
+			$this->_fail("Unable to delete the selected record.");		
+		}
 	}
 	
 	public function save()
@@ -47,19 +56,18 @@ class Location_Controller extends Controller
 			$loc->lng=$_POST['lng'];
 			$loc->url=$_POST['url'];
 			$loc->phone=$_POST['phone'];
-			$loc->type=$_POST['type'];			
+			$loc->type=$_POST['type'];							$loc->trip_id=$_POST['trip_id'];			
 		    $loc->save();
 		
 			$this->_success(array('id'=>$loc->id,'lat' => $_POST['lat'], 'lng' => $_POST['lng'], 'name' => $_POST['name'],'address'=>$_POST['address'],'url'=>$_POST['url'],'phone'=>$_POST['phone'],'type'=>$_POST['type']));
 			
 	}
 	
-	public function jsonlist($type)  {
-	
+	public function jsonlist()  {		$trip = $_GET['trip'];				$type = $_GET['type'];				
 		if($type != 'All') {
-			$locations = ORM::factory('location')->where('type',$type)->find_all();
+			$locations = ORM::factory('location')->where('type',$type)->where('trip_id',$trip)->find_all();
 		} else {
-			$locations = ORM::factory('location')->find_all();
+			$locations = ORM::factory('location')->where('trip_id',$trip)->find_all();
 		}
 		
 		$points = array();

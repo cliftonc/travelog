@@ -1,0 +1,90 @@
+.pwi_loader{	
+	width: 200px;	
+	color: #ffffff;	
+	float: left;
+	padding: 5px;
+	background: none;
+}
+
+.pwi_container a{
+	color: #ffffff;
+}
+
+.pwi_album_description{
+	text-align: left;
+	color: #ffffff;
+	font-family: Arial;
+	font-size: 8pt;
+	background-color: #7F7F7F;
+	padding: 10px;
+
+}
+.pwi_album_description .title{
+	color: #ffffff;
+	font-size: 12pt;
+	margin-top: 10px;
+
+}
+.pwi_album_description .details{
+	color: #ffffff;
+	font-size: 8pt;
+	font-style: italic;
+}
+.pwi_album_description .description{
+	font-size: 10pt;
+	padding: 5px;
+}
+.pwi_album_description .sslink{
+
+}
+
+.pwi_album{
+	float: left;
+	margin: 1em;
+	text-align: center;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+.pwi_album_backlink{
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.pwi_album img{
+	border: 0px solid #7F7F7F;
+}
+
+.pwi_photo{
+	float: left;
+	margin: 1em;
+	text-align: center;	
+}
+.pwi_photo img{	
+	border: 2px solid white;
+	border-bottom: 6px solid white;
+        -moz-box-shadow: 5px 5px 5px #545454;
+        -webkit-box-shadow: 5px 5px 5px #545454;
+}
+
+.pwi_photo a{
+	text-decoration: none;	
+}
+
+.pwi_pager{
+	clear: both;
+}
+.pwi_prevpage, .pwi_nextpage, .pwi_pager_page, .pwi_pager_current{
+	float: left;
+	margin: 5px;
+
+}
+.link{
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.pwi_pager_current{
+	text-decoration: none;
+	font-weight: bold;
+}

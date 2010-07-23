@@ -27,9 +27,18 @@ class Route_Controller extends Controller
  
     public function delete($id)
 	{
+		$status = 'success';		
 		$loc = ORM::factory('route',$id);
-		$loc->delete();
-		$this->_success("");		
+		try {
+			$loc->delete();
+		} catch(Exception $e) {
+			$status = 'fail';			
+		}		
+		if($status == 'success') {
+			$this->_success("");		
+		} else {
+			$this->_fail("Unable to delete the selected record.");		
+		}	
 	}
  
  	 public function jsonroute($id)
@@ -59,6 +68,7 @@ class Route_Controller extends Controller
 			$route->description=$_POST['description'];			
 			$route->start_location_id=$_POST['start_location_id'];
 			$route->end_location_id=$_POST['end_location_id'];			
+			$route->trip_id=$_POST['trip_id'];			
 		    $route->save();
 		
 			$this->_success(array('id'=>$route->id,'description' => $_POST['description'],'start_location_id' => $_POST['start_location_id'],'end_location_id' => $_POST['end_location_id']));
@@ -67,8 +77,10 @@ class Route_Controller extends Controller
 	
 	public function jsonlist()  {
 	
-		$routes = ORM::factory('route')->find_all();
-		$points = array();
+		$trip = $_GET['trip'];			
+		$routes = ORM::factory('route')->where('trip_id',$trip)->find_all();
+	
+	$points = array();
 		foreach ($routes as $row)
 		{
 			array_push($points, array('id'=>$row->id,'description' => $row->description, 'start_location_id' => $row->start_location_id, 'end_location_id' => $row->end_location_id));
