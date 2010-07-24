@@ -27,7 +27,7 @@ $config['default'] = array
 (
 	'benchmark'     => FALSE,
 	'persistent'    => FALSE,
-	'connection'    => 'mysql://db_name:password@localhost/db_name',
+	'connection'    => 'mysql://travelog:slydog@localhost/travelog',
 	'character_set' => 'utf8',
 	'table_prefix'  => '',
 	'object'        => TRUE,
